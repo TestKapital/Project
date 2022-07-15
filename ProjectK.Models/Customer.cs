@@ -16,5 +16,7 @@ namespace ProjectKapital.Models
         public string PhoneNumber { get; set; }
         public int Credit { get; set; }     
 
+        // Foreing Key and Enum?
+
     }
 }
