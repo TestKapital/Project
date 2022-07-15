@@ -24,7 +24,7 @@ namespace ProjectK.DataAccess.Repository
 
         public void Update(CustomerCategory customerCategory)
         {
-            var ObjFromDb = _db.CustomerCategory.FirstOrDefault(u => u.CustomerCategoryId == customerCategory.CustomerCategoryId);
+            var ObjFromDb = _db.CustomerCategory.FirstOrDefault(u => u.Category == customerCategory.Category);
             ObjFromDb.CategoryName = customerCategory.CategoryName;
         }
     }

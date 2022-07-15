@@ -28,7 +28,7 @@ namespace ProjectKapital.Pages.CustomerCategories
                 return NotFound();
             }
 
-            var customerCategory = _dbCustomerCategory.GetFirstOrDefault(m => m.CustomerCategoryId == id);
+            var customerCategory = _dbCustomerCategory.GetFirstOrDefault(m => m.Category == id);
             if (customerCategory == null)
             {
                 return NotFound();

@@ -1,4 +1,4 @@
-﻿using ProjectK.Models;
+﻿using ProjectKapital.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -13,10 +13,10 @@ namespace ProjectKapital.Models
         [DataType(DataType.Date)]
         public string Birthday { get; set; }
         public Gender Gender { get; set; }
-        public int CustomerCategoryId { get; set; }
+        public int Category { get; set; }
         public string PhoneNumber { get; set; }
         public int Credit { get; set; }
-        //public CustomerCategory CustomerCategory { get; set; }
+        public CustomerCategory CustomerCategory { get; set; }
 
     }
 

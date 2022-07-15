@@ -1,4 +1,5 @@
 ﻿@page
+@using ProjectKapital.Models
 @model ProjectKapital.Pages.Customers.CreateModel
 
 @{
@@ -26,15 +27,21 @@
                 <input asp-for="Customer.Birthday" class="form-control" />
                 <span asp-validation-for="Customer.Birthday" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group">                  
                 <label asp-for="Customer.Gender" class="control-label"></label>
-                <input asp-for="Customer.Gender" class="form-control" />            
-                <span asp-validation-for="Customer.Gender" class="text-danger"></span>
+                @Html.DropDownList("Gender",
+                    new SelectList(Enum.GetValues(typeof(Gender))),
+                    "Select Gender",
+                    new { @class = "form-control" })
+                <span asp-validation-for="Customer.Gender" class="text-danger"></span>                      
             </div>
             <div class="form-group">
-                <label asp-for="Customer.CustomerCategoryId" class="control-label"></label>
-                <input asp-for="Customer.CustomerCategoryId" class="form-control" />
-                <span asp-validation-for="Customer.CustomerCategoryId" class="text-danger"></span>
+                <label asp-for="Customer.Category" class="control-label"></label>
+                @Html.DropDownList("CategoryName",
+                    new SelectList(Enum.GetValues(typeof(CategoryName))),
+                    "Select Category",
+                    new { @class = "form-control" })
+                <span asp-validation-for="Customer.Category" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Customer.PhoneNumber" class="control-label"></label>

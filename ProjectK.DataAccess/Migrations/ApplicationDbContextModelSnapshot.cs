@@ -33,10 +33,13 @@ namespace ProjectK.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Category")
+                        .HasColumnType("int");
+
                     b.Property<int>("Credit")
                         .HasColumnType("int");
 
-                    b.Property<int>("CustomerCategoryId")
+                    b.Property<int>("CustomerCategoryCategory")
                         .HasColumnType("int");
 
                     b.Property<string>("FirstName")
@@ -56,24 +59,36 @@ namespace ProjectK.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CustomerCategoryCategory");
+
                     b.ToTable("Customer");
                 });
 
             modelBuilder.Entity("ProjectKapital.Models.CustomerCategory", b =>
                 {
-                    b.Property<int>("CustomerCategoryId")
+                    b.Property<int>("Category")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerCategoryId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Category"), 1L, 1);
 
-                    b.Property<string>("CategoryName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("CategoryName")
+                        .HasColumnType("int");
 
-                    b.HasKey("CustomerCategoryId");
+                    b.HasKey("Category");
 
                     b.ToTable("CustomerCategory");
+                });
+
+            modelBuilder.Entity("ProjectKapital.Models.Customer", b =>
+                {
+                    b.HasOne("ProjectKapital.Models.CustomerCategory", "CustomerCategory")
+                        .WithMany()
+                        .HasForeignKey("CustomerCategoryCategory")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CustomerCategory");
                 });
 #pragma warning restore 612, 618
         }

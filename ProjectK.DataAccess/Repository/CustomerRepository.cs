@@ -30,7 +30,7 @@ namespace ProjectK.DataAccess.Repository
             ObjFromDb.LastName = customer.LastName;
             ObjFromDb.Birthday = customer.Birthday;
             ObjFromDb.Gender = customer.Gender;
-            ObjFromDb.CustomerCategoryId = customer.CustomerCategoryId;
+            ObjFromDb.Category = customer.Category;
             ObjFromDb.PhoneNumber = customer.PhoneNumber;
             ObjFromDb.Credit = customer.Credit;
         }

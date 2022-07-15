@@ -26,8 +26,7 @@ namespace ProjectKapital.Pages.Customers
 
         [BindProperty]
         public Customer Customer { get; set; } = default!;
-        
-
+     
         public async Task<IActionResult> OnPostAsync()
         {
           if (!ModelState.IsValid || _dbCustomer == null || Customer == null)
