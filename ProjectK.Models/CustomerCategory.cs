@@ -11,6 +11,6 @@ namespace ProjectKapital.Models
 
     }
 
-    public enum CategoryName { Paid, Unpaid}
+    public enum CategoryName { Paid = 1, Unpaid = 2}
 
 }
