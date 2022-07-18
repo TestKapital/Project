@@ -17,6 +17,7 @@ namespace ProjectKapital.Models
         public string PhoneNumber { get; set; }
         public int Credit { get; set; }
         //public virtual CustomerCategory CustomerCategory { get; set; }
+        //test
 
     }
 
