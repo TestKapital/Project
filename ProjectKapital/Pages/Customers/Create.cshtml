@@ -27,20 +27,16 @@
                 <input asp-for="Customer.Birthday" class="form-control" />
                 <span asp-validation-for="Customer.Birthday" class="text-danger"></span>
             </div>
-            <div class="form-group">                  
+             <div class="form-group">                  
                 <label asp-for="Customer.Gender" class="control-label"></label>
-                @Html.DropDownList("Gender",
-                    new SelectList(Enum.GetValues(typeof(Gender))),
-                    "Select Gender",
-                    new { @class = "form-control" })
+                <select asp-for="Customer.Gender" asp-items="Html.GetEnumSelectList<Gender>()" class="form-select">
+						<option disabled selected></option>
+			    </select>
                 <span asp-validation-for="Customer.Gender" class="text-danger"></span>                      
             </div>
             <div class="form-group">
                 <label asp-for="Customer.Category" class="control-label"></label>
-                @Html.DropDownList("CategoryName",
-                    new SelectList(Enum.GetValues(typeof(CategoryName))),
-                    "Select Category",
-                    new { @class = "form-control" })
+                <input asp-for="Customer.Category" class="form-control" />
                 <span asp-validation-for="Customer.Category" class="text-danger"></span>
             </div>
             <div class="form-group">

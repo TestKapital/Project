@@ -16,7 +16,7 @@ namespace ProjectKapital.Models
         public int Category { get; set; }
         public string PhoneNumber { get; set; }
         public int Credit { get; set; }
-        public CustomerCategory CustomerCategory { get; set; }
+        //public CustomerCategory CustomerCategory { get; set; }
 
     }
 

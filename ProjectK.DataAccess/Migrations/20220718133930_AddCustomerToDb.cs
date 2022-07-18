@@ -9,19 +9,6 @@ namespace ProjectK.DataAccess.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "CustomerCategory",
-                columns: table => new
-                {
-                    Category = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CategoryName = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CustomerCategory", x => x.Category);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Customer",
                 columns: table => new
                 {
@@ -33,24 +20,25 @@ namespace ProjectK.DataAccess.Migrations
                     Gender = table.Column<int>(type: "int", nullable: false),
                     Category = table.Column<int>(type: "int", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Credit = table.Column<int>(type: "int", nullable: false),
-                    CustomerCategoryCategory = table.Column<int>(type: "int", nullable: false)
+                    Credit = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Customer", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Customer_CustomerCategory_CustomerCategoryCategory",
-                        column: x => x.CustomerCategoryCategory,
-                        principalTable: "CustomerCategory",
-                        principalColumn: "Category",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Customer_CustomerCategoryCategory",
-                table: "Customer",
-                column: "CustomerCategoryCategory");
+            migrationBuilder.CreateTable(
+                name: "CustomerCategory",
+                columns: table => new
+                {
+                    Category = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CustomerCategory", x => x.Category);
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
