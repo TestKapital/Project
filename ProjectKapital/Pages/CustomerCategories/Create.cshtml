@@ -1,4 +1,5 @@
 ﻿@page
+@using ProjectKapital.Models
 @model ProjectKapital.Pages.CustomerCategories.CreateModel
 
 @{
@@ -13,7 +14,9 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="CustomerCategory.CategoryName" class="control-label"></label>
-                <input asp-for="CustomerCategory.CategoryName" class="form-control" />
+                <select asp-for="CustomerCategory.CategoryName" asp-items="Html.GetEnumSelectList<CategoryName>()" class="form-select">
+						<option disabled selected></option>
+			    </select>
                 <span asp-validation-for="CustomerCategory.CategoryName" class="text-danger"></span>
             </div>
             <div class="form-group">
