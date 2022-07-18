@@ -30,7 +30,7 @@ namespace ProjectKapital.Pages.CustomerCategories
                 return NotFound();
             }
 
-            var customerCategory = _dbCustomerCategory.GetFirstOrDefault(m => m.Category == id);
+            var customerCategory = _dbCustomerCategory.GetFirstOrDefault(m => m.Id == id);
             if (customerCategory == null)
             {
                 return NotFound();

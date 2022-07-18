@@ -11,8 +11,8 @@ using ProjectK.DataAccess.Data;
 namespace ProjectK.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220718133930_AddCustomerToDb")]
-    partial class AddCustomerToDb
+    [Migration("20220718152842_jai")]
+    partial class jai
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -63,17 +63,16 @@ namespace ProjectK.DataAccess.Migrations
 
             modelBuilder.Entity("ProjectKapital.Models.CustomerCategory", b =>
                 {
-                    b.Property<int>("Category")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Category"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("CategoryName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("CategoryName")
+                        .HasColumnType("int");
 
-                    b.HasKey("Category");
+                    b.HasKey("Id");
 
                     b.ToTable("CustomerCategory");
                 });

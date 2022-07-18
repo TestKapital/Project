@@ -4,7 +4,7 @@
 
 namespace ProjectK.DataAccess.Migrations
 {
-    public partial class AddCustomerToDb : Migration
+    public partial class jai : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -31,13 +31,13 @@ namespace ProjectK.DataAccess.Migrations
                 name: "CustomerCategory",
                 columns: table => new
                 {
-                    Category = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    CategoryName = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CustomerCategory", x => x.Category);
+                    table.PrimaryKey("PK_CustomerCategory", x => x.Id);
                 });
         }
 
