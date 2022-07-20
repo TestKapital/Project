@@ -25,7 +25,7 @@ namespace ProjectK.DataAccess.Repository
             ObjFromDb.LastName = customer.LastName;
             ObjFromDb.Birthday = customer.Birthday;
             ObjFromDb.Gender = customer.Gender;
-            ObjFromDb.CategoryId = customer.CategoryId;
+            ObjFromDb.CustomerCategoryId = customer.CustomerCategoryId;
             ObjFromDb.PhoneNumber = customer.PhoneNumber;
             ObjFromDb.Credit = customer.Credit;
         }

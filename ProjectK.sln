@@ -5,11 +5,11 @@ VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectKapital", "ProjectKapital\ProjectKapital.csproj", "{EE105B8C-9E5F-4B5B-BC00-E42724FF9828}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectK.DataAccess", "ProjectK.DataAccess\ProjectK.DataAccess.csproj", "{F1B5199A-EADF-4CB0-826E-42DD609F1950}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectK.DataAccess", "ProjectK.DataAccess\ProjectK.DataAccess.csproj", "{F1B5199A-EADF-4CB0-826E-42DD609F1950}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectK.Models", "ProjectK.Models\ProjectK.Models.csproj", "{E3F32595-1EB2-442D-A065-91310A630B2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectK.Models", "ProjectK.Models\ProjectK.Models.csproj", "{E3F32595-1EB2-442D-A065-91310A630B2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectK.Utility", "ProjectK.Utility\ProjectK.Utility.csproj", "{5B12DF35-07C3-4072-8C9E-DD14048CCC9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectK.Utility", "ProjectK.Utility\ProjectK.Utility.csproj", "{5B12DF35-07C3-4072-8C9E-DD14048CCC9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

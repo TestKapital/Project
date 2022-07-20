@@ -14,6 +14,6 @@ namespace ProjectK.DataAccess.Repository.IRepository
         void RemoveRange(IEnumerable<T> entity);
         IEnumerable<T> GetAll();
         T GetFirstOrDefault(Expression<Func<T, bool>> filter = null);
-
+        IEnumerable<T> ListWithInclude(Func<T, bool> filter = null, params Expression<Func<T, dynamic>>[] includePath);
     }
 }

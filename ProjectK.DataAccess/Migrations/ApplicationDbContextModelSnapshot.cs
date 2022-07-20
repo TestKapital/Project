@@ -33,11 +33,10 @@ namespace ProjectK.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CategoryId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("Credit")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CustomerCategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("FirstName")
@@ -57,6 +56,8 @@ namespace ProjectK.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CustomerCategoryId");
+
                     b.ToTable("Customer");
                 });
 
@@ -75,6 +76,17 @@ namespace ProjectK.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CustomerCategory");
+                });
+
+            modelBuilder.Entity("ProjectKapital.Models.Customer", b =>
+                {
+                    b.HasOne("ProjectKapital.Models.CustomerCategory", "CustomerCategory")
+                        .WithMany()
+                        .HasForeignKey("CustomerCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CustomerCategory");
                 });
 #pragma warning restore 612, 618
         }

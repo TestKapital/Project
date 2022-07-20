@@ -41,6 +41,18 @@ namespace ProjectK.DataAccess.Repository
             return query.FirstOrDefault();
         }
 
+        public IEnumerable<T> ListWithInclude(Func<T, bool> filter = null, params Expression<Func<T, dynamic>>[] includePath)
+        {
+            if (filter == null) filter = e => true;
+            IQueryable<T> query = null;
+            query = dbSet;
+            foreach (var item in includePath)
+            {
+                query = query.Include(item);
+            }
+            return query.Where(filter);
+        }
+
         public void Remove(T entity)
         {
             dbSet.Remove(entity);

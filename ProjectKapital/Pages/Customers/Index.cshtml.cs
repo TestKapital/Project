@@ -27,7 +27,7 @@ namespace ProjectKapital.Pages.Customers
 
             if (_unitOfWork != null)
             {
-                Customer = (IList<Customer>)_unitOfWork.Customer.GetAll();
+                Customer = _unitOfWork.Customer.ListWithInclude(null,x=>x.CustomerCategory).ToList();
             }
         }
     }
