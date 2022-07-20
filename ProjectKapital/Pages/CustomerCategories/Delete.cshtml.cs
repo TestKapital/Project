@@ -12,25 +12,25 @@ namespace ProjectKapital.Pages.CustomerCategories
 {
     public class DeleteModel : PageModel
     {
- 
-            private readonly ICustomerCategoryRepository _dbCustomerCategory;
 
-            public DeleteModel(ICustomerCategoryRepository dbCustomerCategory)
-            {
-                _dbCustomerCategory = dbCustomerCategory;
-            }
+        private readonly IUnitOfWork _unitOfWork;
 
-            [BindProperty]
+        public DeleteModel(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
+        [BindProperty]
             public CustomerCategory CustomerCategory { get; set; } = default!;
 
             public async Task<IActionResult> OnGetAsync(int? id)
             {
-                if (id == null || _dbCustomerCategory == null)
+                if (id == null || _unitOfWork == null)
                 {
                     return NotFound();
                 }
 
-                var customerCategory = _dbCustomerCategory.GetFirstOrDefault(m => m.Id == id);
+                var customerCategory = _unitOfWork.CustomerCategory.GetFirstOrDefault(m => m.Id == id);
 
                 if (customerCategory == null)
                 {
@@ -45,17 +45,17 @@ namespace ProjectKapital.Pages.CustomerCategories
 
             public async Task<IActionResult> OnPostAsync(int? id)
             {
-                if (id == null || _dbCustomerCategory == null)
+                if (id == null || _unitOfWork == null)
                 {
                     return NotFound();
                 }
-                var customerCategory = _dbCustomerCategory.GetFirstOrDefault(m => m.Id == id);
+                var customerCategory = _unitOfWork.CustomerCategory.GetFirstOrDefault(m => m.Id == id);
 
                 if (customerCategory != null)
                 {
                     CustomerCategory = customerCategory;
-                    _dbCustomerCategory.Remove(CustomerCategory);
-                    _dbCustomerCategory.Save();
+                    _unitOfWork.CustomerCategory.Remove(CustomerCategory);
+                    _unitOfWork.Save();
                 }
 
                 return RedirectToPage("./Index");

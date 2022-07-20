@@ -12,23 +12,23 @@ namespace ProjectKapital.Pages.CustomerCategories
 {
     public class DetailsModel : PageModel
     {
-        private readonly ICustomerCategoryRepository _dbCustomerCategory;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public DetailsModel(ICustomerCategoryRepository dbCustomerCategory)
+        public DetailsModel(IUnitOfWork unitOfWork)
         {
-            _dbCustomerCategory = dbCustomerCategory;
+            _unitOfWork = unitOfWork;
         }
 
         public CustomerCategory CustomerCategory { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _dbCustomerCategory == null)
+            if (id == null || _unitOfWork == null)
             {
                 return NotFound();
             }
 
-            var customerCategory = _dbCustomerCategory.GetFirstOrDefault(m => m.Id == id);
+            var customerCategory = _unitOfWork.CustomerCategory.GetFirstOrDefault(m => m.Id == id);
             if (customerCategory == null)
             {
                 return NotFound();

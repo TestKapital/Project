@@ -13,11 +13,11 @@ namespace ProjectKapital.Pages.CustomerCategories
 {
     public class EditModel : PageModel
     {
-        private readonly ICustomerCategoryRepository _dbCustomerCategory;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public EditModel(ICustomerCategoryRepository dbCustomerCategory)
+        public EditModel(IUnitOfWork unitOfWork)
         {
-            _dbCustomerCategory = dbCustomerCategory;
+            _unitOfWork = unitOfWork;
         }
 
         [BindProperty]
@@ -25,12 +25,12 @@ namespace ProjectKapital.Pages.CustomerCategories
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _dbCustomerCategory == null)
+            if (id == null || _unitOfWork == null)
             {
                 return NotFound();
             }
 
-            var customerCategory = _dbCustomerCategory.GetFirstOrDefault(m => m.Id == id);
+            var customerCategory = _unitOfWork.CustomerCategory.GetFirstOrDefault(m => m.Id == id);
             if (customerCategory == null)
             {
                 return NotFound();
@@ -43,8 +43,8 @@ namespace ProjectKapital.Pages.CustomerCategories
         {
             if (ModelState.IsValid)
             {
-                _dbCustomerCategory.Update(CustomerCategory);
-                _dbCustomerCategory.Save();
+                _unitOfWork.CustomerCategory.Update(CustomerCategory);
+                _unitOfWork.Save();
                 return RedirectToPage("./Index");
             }
 

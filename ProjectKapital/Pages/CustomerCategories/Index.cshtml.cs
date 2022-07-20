@@ -12,20 +12,20 @@ namespace ProjectKapital.Pages.CustomerCategories
 {
     public class IndexModel : PageModel
     {
-        private readonly ICustomerCategoryRepository _dbCustomerCategory;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public IndexModel(ICustomerCategoryRepository dbCustomerCategory)
+        public IndexModel(IUnitOfWork unitOfWork)
         {
-            _dbCustomerCategory = dbCustomerCategory;
+            _unitOfWork = unitOfWork;
         }
 
         public IList<CustomerCategory> CustomerCategory { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            if (_dbCustomerCategory != null)
+            if (_unitOfWork != null)
             {
-                CustomerCategory = (IList<CustomerCategory>)_dbCustomerCategory.GetAll();
+                CustomerCategory = (IList<CustomerCategory>)_unitOfWork.CustomerCategory.GetAll();
             }
         }
     }

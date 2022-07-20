@@ -13,10 +13,10 @@ namespace ProjectKapital.Models
         [DataType(DataType.Date)]
         public string Birthday { get; set; }
         public Gender Gender { get; set; }
-        public int Category { get; set; }
+        [Display(Name ="Category")]
+        public string CategoryId { get; set; }
         public string PhoneNumber { get; set; }
         public int Credit { get; set; }
-        //public virtual CustomerCategory CustomerCategory { get; set; }
 
     }
 

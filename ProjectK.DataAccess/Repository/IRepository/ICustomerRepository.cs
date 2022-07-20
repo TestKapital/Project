@@ -10,6 +10,6 @@ namespace ProjectK.DataAccess.Repository.IRepository
     public interface ICustomerRepository : IRepository<Customer>
     {
         void Update(Customer customer);
-        void Save();
+        
     }
 }

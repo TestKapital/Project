@@ -7,10 +7,9 @@ namespace ProjectKapital.Models
     {
         [Key]
         public int Id { get; set; }
-        public CategoryName CategoryName { get; set; }
+        public string CategoryName { get; set; }
 
     }
 
-    public enum CategoryName { Paid = 1, Unpaid = 2}
 
 }

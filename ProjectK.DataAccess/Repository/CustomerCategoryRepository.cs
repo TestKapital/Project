@@ -17,11 +17,6 @@ namespace ProjectK.DataAccess.Repository
             _db = context;
         }
 
-        public void Save()
-        {
-            _db.SaveChanges();
-        }
-
         public void Update(CustomerCategory customerCategory)
         {
             var ObjFromDb = _db.CustomerCategory.FirstOrDefault(u => u.Id == customerCategory.Id);

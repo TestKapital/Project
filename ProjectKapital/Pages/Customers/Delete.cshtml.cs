@@ -12,11 +12,11 @@ namespace ProjectKapital.Pages.Customers
 {
     public class DeleteModel : PageModel
     {
-        private readonly ICustomerRepository _dbCustomer;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public DeleteModel(ICustomerRepository dbCustomer)
+        public DeleteModel(IUnitOfWork unitOfWork)
         {
-            _dbCustomer = dbCustomer;
+            _unitOfWork = unitOfWork;
         }
 
         [BindProperty]
@@ -24,12 +24,12 @@ namespace ProjectKapital.Pages.Customers
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _dbCustomer == null)
+            if (id == null || _unitOfWork == null)
             {
                 return NotFound();
             }
 
-            var customer = _dbCustomer.GetFirstOrDefault(m => m.Id == id);
+            var customer = _unitOfWork.Customer.GetFirstOrDefault(m => m.Id == id);
 
             if (customer == null)
             {
@@ -44,17 +44,17 @@ namespace ProjectKapital.Pages.Customers
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _dbCustomer == null)
+            if (id == null || _unitOfWork == null)
             {
                 return NotFound();
             }
-            var customer = _dbCustomer.GetFirstOrDefault(m => m.Id == id);
+            var customer = _unitOfWork.Customer.GetFirstOrDefault(m => m.Id == id);
 
             if (customer != null)
             {
                 Customer = customer;
-                _dbCustomer.Remove(Customer);
-                _dbCustomer.Save();
+                _unitOfWork.Customer.Remove(Customer);
+                _unitOfWork.Save();
             }
 
             return RedirectToPage("./Index");

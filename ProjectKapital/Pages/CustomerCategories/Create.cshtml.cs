@@ -12,11 +12,11 @@ namespace ProjectKapital.Pages.CustomerCategories
 {
     public class CreateModel : PageModel
     {
-        private readonly ICustomerCategoryRepository _dbCustomerCategory;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public CreateModel(ICustomerCategoryRepository dbCustomerCategory)
+        public CreateModel(IUnitOfWork unitOfWork)
         {
-            _dbCustomerCategory = dbCustomerCategory;
+            _unitOfWork = unitOfWork;
         }
 
 
@@ -31,13 +31,13 @@ namespace ProjectKapital.Pages.CustomerCategories
 
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _dbCustomerCategory == null || CustomerCategory == null)
+          if (!ModelState.IsValid || _unitOfWork == null || CustomerCategory == null)
             {
                 return Page();
             }
 
-            _dbCustomerCategory.Add(CustomerCategory);
-            _dbCustomerCategory.Save();
+            _unitOfWork.CustomerCategory.Add(CustomerCategory);
+            _unitOfWork.Save();
 
             return RedirectToPage("./Index");
         }

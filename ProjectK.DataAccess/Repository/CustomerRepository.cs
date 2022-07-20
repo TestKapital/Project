@@ -18,11 +18,6 @@ namespace ProjectK.DataAccess.Repository
             _db = context;
         }
 
-        public void Save()
-        {
-            _db.SaveChanges();
-        }
-
         public void Update(Customer customer)
         {
             var ObjFromDb = _db.Customer.FirstOrDefault(u => u.Id == customer.Id);
@@ -30,7 +25,7 @@ namespace ProjectK.DataAccess.Repository
             ObjFromDb.LastName = customer.LastName;
             ObjFromDb.Birthday = customer.Birthday;
             ObjFromDb.Gender = customer.Gender;
-            ObjFromDb.Category = customer.Category;
+            ObjFromDb.CategoryId = customer.CategoryId;
             ObjFromDb.PhoneNumber = customer.PhoneNumber;
             ObjFromDb.Credit = customer.Credit;
         }

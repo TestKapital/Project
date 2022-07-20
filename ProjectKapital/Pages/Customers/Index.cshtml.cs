@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProjectK.DataAccess.Repository.IRepository;
 using ProjectKapital.Models;
@@ -12,20 +13,21 @@ namespace ProjectKapital.Pages.Customers
 {
     public class IndexModel : PageModel
     {
-        private readonly ICustomerRepository _dbCustomer;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public IndexModel(ICustomerRepository dbCustomer)
+        public IndexModel(IUnitOfWork unitOfWork)
         {
-            _dbCustomer = dbCustomer;
+            _unitOfWork = unitOfWork;
         }
 
         public IList<Customer> Customer { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            if (_dbCustomer != null)
+
+            if (_unitOfWork != null)
             {
-                Customer = (IList<Customer>)_dbCustomer.GetAll();
+                Customer = (IList<Customer>)_unitOfWork.Customer.GetAll();
             }
         }
     }

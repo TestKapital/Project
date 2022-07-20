@@ -12,23 +12,23 @@ namespace ProjectKapital.Pages.Customers
 {
     public class DetailsModel : PageModel
     {
-        private readonly ICustomerRepository _dbCustomer;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public DetailsModel(ICustomerRepository dbCustomer)
+        public DetailsModel(IUnitOfWork unitOfWork)
         {
-            _dbCustomer = dbCustomer;
+            _unitOfWork = unitOfWork;
         }
 
         public Customer Customer { get; set; } = default!; 
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _dbCustomer == null)
+            if (id == null || _unitOfWork == null)
             {
                 return NotFound();
             }
 
-            var customer = _dbCustomer.GetFirstOrDefault(m => m.Id == id);
+            var customer = _unitOfWork.Customer.GetFirstOrDefault(m => m.Id == id);
             if (customer == null)
             {
                 return NotFound();
